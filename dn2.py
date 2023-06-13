@@ -30,11 +30,13 @@ def start0():
     counter = raiz.after(1, start)
 
 def start():
-    global counter, text_notas
+    global counter, text_notas,CheckVar1
     notas = text_notas.get('1.0','end')
     for char in notas:
         if char == '\n':
-            for j in range(5):
+            print(CheckVar1.get())
+            for j in range(CheckVar1.get()):
+                
                 keyboard.press(Key.tab)
                 keyboard.release(Key.tab)
         else:
@@ -50,6 +52,10 @@ raiz.bind("<Escape>",cancel)
 
 text_esc = ttk.Label(raiz,text='Para cancelar aperte ESC')
 text_esc.pack()
+CheckVar1 = ttk.IntVar()
+c1 = ttk.Checkbutton(raiz, text='Nota Final?',variable=CheckVar1, onvalue=5, offvalue=1)
+c1.select()
+c1.pack()
 status ='Cole as notas e aperte no botão Iniciar'
 text_status = ttk.Label(raiz,text=status)
 text_status.pack()
